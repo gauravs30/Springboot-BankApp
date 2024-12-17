@@ -7,7 +7,7 @@ services:
       - MYSQL_ROOT_PASSWORD=Test@123
       - MYSQL_DATABASE=BankDB
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - bankapp-volume:/var/lib/mysql
     networks:
       - bankapp
     healthcheck:
@@ -18,7 +18,7 @@ services:
       start_period: 30s
 
   mainapp:
-    build: .
+    image: ${DUSER}/${IMAGE}
     container_name: Bankapp
     image: gauravs25/springboot-bankapp:latest
     environment:
@@ -42,3 +42,6 @@ services:
 
 networks:
   bankapp:
+
+volumes:
+    bankapp-volume:
