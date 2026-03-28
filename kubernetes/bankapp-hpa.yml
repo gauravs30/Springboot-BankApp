@@ -7,7 +7,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: bankapp
+    name: bankapp-deploy
   minReplicas: 1
   maxReplicas: 5
   metrics:
@@ -16,4 +16,4 @@ spec:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 40  # 40% avg cpu utilization
+        averageUtilization: 40

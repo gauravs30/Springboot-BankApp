@@ -23,7 +23,7 @@ pipeline {
         stage('Git: Code Checkout') {
             steps {
                 script{
-                    code_checkout("https://github.com/DevMadhup/Springboot-BankApp.git","DevOps")
+                    code_checkout("https://github.com/LondheShubham153/Springboot-BankApp.git","DevOps")
                 }
             }
         }
@@ -47,7 +47,7 @@ pipeline {
         stage("SonarQube: Code Analysis"){
             steps{
                 script{
-                    sonarqube_analysis("Sonar","BankApp","BankApp")
+                    sonarqube_analysis("Sonar","bankapp","bankapp")
                 }
             }
         }
@@ -59,11 +59,11 @@ pipeline {
                 }
             }
         }
-        
+
         stage("Docker: Build Images"){
             steps{
                 script{
-                    docker_build("BankApp","${params.DOCKER_TAG}","madhupdevops")
+                    docker_build("bankapp","${params.DOCKER_TAG}","madhupdevops")
                 }
             }
         }
@@ -71,7 +71,7 @@ pipeline {
         stage("Docker: Push to DockerHub"){
             steps{
                 script{
-                    docker_push("BankApp","${params.DOCKER_TAG}","madhupdevops")
+                    docker_push("bankapp","${params.DOCKER_TAG}","madhupdevops")
                 }
             }
         }
